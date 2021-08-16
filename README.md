@@ -2,7 +2,7 @@
 O código foi adaptado do meu projeto anterior referente a um CRUD + MySQL.
 Algumas das lib's presentes são do Servlet e do MySQL, eu os usei para testar o CRUD como todo e não somente a API.
 
-## As lib's que utilizei:
+## As libs que utilizei:
 ```java
 // Utilizei .ArrayList e .List para criar uma lista no GET_All
 import java.util.*;
