@@ -4,13 +4,13 @@ Algumas das lib's presentes são do Servlet e do MySQL, eu os usei para testar o
 
 ## As libs que utilizei:
 ```java
-// Utilizei .ArrayList e .List para criar uma lista no GET_All
+// Utilizei .ArrayList e .List para criar uma lista no GET_All e o .Iterator para integrar os Objetos do .json
 import java.util.*;
 
-// Utilizei para poder criar os Objetos e armazena-los no .json
+// Utilizei para dar "parser" em Objetos e poder criar os Objetos para armazena-los no .json
 import org.json.simple.*;
 
-// Utilizei para que pudesse usar o try-catch usado no writeJSON()
+// Utilizei para que pudesse usar o try-catch usado no Read/Write do .json
 import java.io.*;
 ```
 
