@@ -1,10 +1,11 @@
 package net.java.usermanage.model;
 
+
 import java.io.FileWriter;			// Para poder escrever um arquivo, no caso .json
 import java.io.IOException;			// Para o Try/Catch, no caso usado no witeJSON()
 
-import org.json.simple.JSONArray;	// json-simple settar os objetos
-import org.json.simple.JSONObject;	// agrupar 
+import org.json.simple.JSONArray;	// json-simple settar os objeto e os agrupar
+import org.json.simple.JSONObject;
 
 public class User {
 	
@@ -71,7 +72,7 @@ public class User {
         
         // Esse diretório terá que ser alterado, é possivel fazer sem
         // porém o tomcat não permite criação de arquivos sem diretório.
-        try (FileWriter file = new FileWriter("C:\\Users\\dede-\\Documents\\GitHub\\Java-CRUD-Model-SQL\\JSP-CRUD\\json_file\\user-" + person[0]  + ".json")) {
+        try (FileWriter file = new FileWriter(person[0]  + ".json")) {
             file.write(userList.toJSONString());
             file.flush();
         } catch (IOException e) { e.printStackTrace(); }

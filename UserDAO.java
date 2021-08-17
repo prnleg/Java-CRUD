@@ -4,16 +4,15 @@
 // Esse código é adaptado de um servletpara MySQL que eu criei,
 // pode ser que precise mais do que pequenas alteracoes para que funcione.
 
-//
 
 package net.java.usermanage;
+// import da Classe User
+import net.java.usermanage.model.User;
 
 import java.sql.*;				// Para uso do sql, driver, logging, command line, etc...
 import java.util.ArrayList;		// Para o GET-All do MySQL
 import java.util.List;			// Para o GET-All do MySQL
 
-// import da Classe User
-import net.java.usermanage.model.User;
 
 // para uso do mySQL, talvez de para modificar para mongoDB ou salvar em JSON
 public class UserDAO {
@@ -48,12 +47,13 @@ public class UserDAO {
 	// Mesmo local onde o writeJSON ocorre
 	//endpoint(@PUT)
 	public void insertUser(User user) throws SQLException {
+		
+		user.invertDate();
+		user.twoNames();
+		user.writeJSON();
+		
 		try(Connection connection = getConnection(); 
 				PreparedStatement prepStat = connection.prepareStatement(INSERT_USER_SQL);){
-			
-			user.invertDate();
-			user.twoNames();
-			user.writeJSON();
 			
 			prepStat.setString(1, user.getName());
 			prepStat.setString(2, user.getBirth());
@@ -72,6 +72,9 @@ public class UserDAO {
 	public User selectUser(int id) {
 		
 		User user = null;
+		
+		
+		// Aqui pra baixo MySQL
 		try(Connection connection = getConnection(); 
 				PreparedStatement prepStat = connection.prepareStatement(SELECT_USER_BY_ID);) {
 			
@@ -100,6 +103,8 @@ public class UserDAO {
 		
 		@SuppressWarnings("unused")
 		User user = null;
+		
+		// Aqui pra baixo MySQL
 		try(Connection connection = getConnection(); 
 				PreparedStatement prepStat = connection.prepareStatement(SELECT_ALL_USERS);) {
 			
@@ -125,6 +130,7 @@ public class UserDAO {
 	public boolean updateUser(User user) throws SQLException {
 		boolean rowUp;
 		
+		// Aqui pra baixo MySQL
 		try(Connection connection = getConnection(); 
 		PreparedStatement prepStat = connection.prepareStatement(UPDATE_USERS_SQL);){
 			
@@ -143,6 +149,8 @@ public class UserDAO {
 	//* (DELETE by user_id)
 	public boolean deleteUser(int id) throws SQLException {
 		boolean row;
+		
+		// Aqui pra baixo MySQL
 		try(Connection connection = getConnection(); 
 		PreparedStatement prepStat = connection.prepareStatement(DELETE_USERS_SQL);){
 			
